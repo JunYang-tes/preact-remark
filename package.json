@@ -1,7 +1,7 @@
 {
   "version": "2.1.0",
-  "name": "react-remark",
-  "description": "Renders Markdown as React components",
+  "name": "preact-remark",
+  "description": "Renders Markdown as Preact components",
   "author": "Christian Murphy <christian.murphy.42@gmail.com>",
   "license": "MIT",
   "repository": "remarkjs/react-remark",
@@ -11,7 +11,7 @@
     "url": "https://opencollective.com/unified"
   },
   "main": "dist/index.js",
-  "module": "dist/react-remark.esm.js",
+  "module": "dist/preact-remark.esm.js",
   "typings": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
@@ -30,11 +30,11 @@
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
-    "react": ">=16.8"
+    "preact": ">=10"
   },
   "dependencies": {
     "rehype-react": "^6.0.0",
@@ -44,26 +44,24 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "@storybook/addon-essentials": "^6.0.0",
-    "@storybook/react": "^6.0.0",
+    "@chromatic-com/storybook": "^3.2.6",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
+    "@storybook/preact": "^8.6.12",
+    "@storybook/preact-webpack5": "^8.6.12",
     "@testing-library/jest-dom": "^5.0.0",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/react-hooks": "^7.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
     "husky": "^7.0.0",
     "katex": "^0.13.0",
     "pinst": "^2.0.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-test-renderer": "^17.0.0",
+    "preact": "^10.0.0",
     "rehype-katex": "^5.0.0",
     "rehype-raw": "^5.0.0",
     "rehype-sanitize": "^4.0.0",
     "remark-gfm": "^1.0.0",
     "remark-math": "^4.0.0",
+    "storybook": "^8.6.12",
     "tsdx": "^0.14.0",
-    "typescript": "^3.0.0"
+    "typescript": "^5.8.3"
   },
   "prettier": {
     "printWidth": 80,

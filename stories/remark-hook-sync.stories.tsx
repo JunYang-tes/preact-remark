@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from 'preact/hooks';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';

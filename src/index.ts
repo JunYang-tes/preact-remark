@@ -1,12 +1,9 @@
 import {
-  FunctionComponent,
-  Fragment,
-  ReactElement,
-  createElement,
   useState,
   useEffect,
   useCallback,
-} from 'react';
+} from 'preact/hooks';
+import {ComponentChild, Fragment,FunctionComponent,createElement} from 'preact'
 import unified, { PluggableList } from 'unified';
 import remarkParse, { RemarkParseOptions } from 'remark-parse';
 import { Options as RemarkRehypeOptions } from 'mdast-util-to-hast';
@@ -19,7 +16,7 @@ export interface UseRemarkSyncOptions {
   remarkParseOptions?: RemarkParseOptions;
   remarkToRehypeOptions?: RemarkRehypeOptions;
   rehypeReactOptions?: PartialBy<
-    RehypeReactOptions<typeof createElement>,
+    RehypeReactOptions<any>,
     'createElement'
   >;
   remarkPlugins?: PluggableList;
@@ -35,7 +32,7 @@ export const useRemarkSync = (
     remarkPlugins = [],
     rehypePlugins = [],
   }: UseRemarkOptions = {}
-): ReactElement =>
+): ComponentChild =>
   unified()
     .use(remarkParse, remarkParseOptions)
     .use(remarkPlugins)
@@ -46,7 +43,7 @@ export const useRemarkSync = (
       Fragment,
       ...rehypeReactOptions,
     } as RehypeReactOptions<typeof createElement>)
-    .processSync(source).result as ReactElement;
+    .processSync(source).result as any;
 
 export interface UseRemarkOptions extends UseRemarkSyncOptions {
   onError?: (err: Error) => void;
@@ -59,8 +56,8 @@ export const useRemark = ({
   remarkPlugins = [],
   rehypePlugins = [],
   onError = () => {},
-}: UseRemarkOptions = {}): [ReactElement | null, (source: string) => void] => {
-  const [reactContent, setReactContent] = useState<ReactElement | null>(null);
+}: UseRemarkOptions = {}): [ComponentChild | null, (source: string) => void] => {
+  const [reactContent, setReactContent] = useState<ComponentChild | null>(null);
 
   const setMarkdownSource = useCallback((source: string) => {
     unified()
@@ -74,7 +71,7 @@ export const useRemark = ({
         ...rehypeReactOptions,
       } as RehypeReactOptions<typeof createElement>)
       .process(source)
-      .then((vfile) => setReactContent(vfile.result as ReactElement))
+      .then((vfile) => setReactContent(vfile.result as ComponentChild))
       .catch(onError);
   }, []);
 
