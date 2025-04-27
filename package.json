@@ -10,8 +10,7 @@
     "type": "opencollective",
     "url": "https://opencollective.com/unified"
   },
-  "main": "dist/index.js",
-  "module": "dist/preact-remark.esm.js",
+  "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
@@ -22,7 +21,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "tsc -b && vite build",
+    "build": "npx tsc",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
@@ -73,5 +72,6 @@
       "config:base",
       ":preserveSemverRanges"
     ]
-  }
+  },
+  "packageManager": "pnpm@8.15.9+sha512.499434c9d8fdd1a2794ebf4552b3b25c0a633abcee5bb15e7b5de90f32f47b513aca98cd5cfd001c31f0db454bc3804edccd578501e4ca293a6816166bbd9f81"
 }
