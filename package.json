@@ -22,11 +22,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "build": "tsc -b && vite build",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
@@ -37,6 +33,7 @@
     "preact": ">=10"
   },
   "dependencies": {
+    "mdast-util-to-hast": "^13.2.0",
     "rehype-react": "^6.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
@@ -45,9 +42,11 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@chromatic-com/storybook": "^3.2.6",
+    "@preact/preset-vite": "^2.10.1",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
     "@storybook/preact": "^8.6.12",
+    "@storybook/preact-vite": "^8.6.12",
     "@storybook/preact-webpack5": "^8.6.12",
     "@testing-library/jest-dom": "^5.0.0",
     "husky": "^7.0.0",
@@ -60,8 +59,8 @@
     "remark-gfm": "^1.0.0",
     "remark-math": "^4.0.0",
     "storybook": "^8.6.12",
-    "tsdx": "^0.14.0",
-    "typescript": "^5.8.3"
+    "typescript": "~5.7.2",
+    "vite": "^6.3.1"
   },
   "prettier": {
     "printWidth": 80,
